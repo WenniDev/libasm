@@ -3,6 +3,8 @@ section .data
 section .text
 	global ft_strlen
 
+	;size_t ft_strlen(const char *s);
+
 	;char *s => RDI
 ft_strlen:
 	xor	rax, rax

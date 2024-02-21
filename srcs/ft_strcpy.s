@@ -3,6 +3,8 @@ section .data
 section .text
 	global ft_strcpy
 
+	;char *ft_strcpy(char *dest, const char *src);
+
 	;char *dest			=>	RDI
 	;const char *src	=>	RSI
 ft_strcpy:
