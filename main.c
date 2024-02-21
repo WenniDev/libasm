@@ -43,5 +43,21 @@ int main(void) {
 		len = ft_write(1, buf, strlen(buf));
 		printf("	|	len: %d\n", (int)ft_strlen(buf));
 	}
+
+
+	{
+		printf("\n\n<==== ft_read ====>\n");
+		
+		char buf[520];
+		int len = 0;
+
+		if (ft_read(0, NULL, sizeof(buf)) < 0)
+			printf("ft_read: %s	|	errno: %d\n", strerror(errno), errno);
+		if (ft_read(-1, &buf, sizeof(buf)) < 0)
+			printf("ft_read: %s	|	errno: %d\n", strerror(errno), errno);
+
+		len = ft_read(0, &buf, sizeof(buf));
+		printf("buffer: %s	|	len: %d\n", buf, (int)ft_strlen(buf));
+	}
 	return (0);
 }
