@@ -1,6 +1,7 @@
 #include "libasm.h"
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 int main(void) {
 	{
@@ -26,6 +27,21 @@ int main(void) {
 		const char *s2 = "0123456";
 		printf("%s(%p) - %s(%p) = %d\n", s1, s1, s2, s2, ft_strcmp(s1, s2));
 		printf("%s(%p) - %s(%p) = %d\n", s1, s1, s2, s2, strcmp(s1, s2));
+	}
+	{
+		printf("\n\n<==== ft_write ====>\n");
+		
+		const char *buf = "coucou";
+		int len = 0;
+
+		printf("buffer:	%s(%p)\n", buf, buf);
+		if (ft_write(1, NULL, strlen(buf)) < 0)
+			printf("ft_write: %s	|	errno: %d\n", strerror(errno), errno);
+		if (ft_write(-1, buf, strlen(buf)) < 0)
+			printf("ft_write: %s	|	errno: %d\n", strerror(errno), errno);
+
+		len = ft_write(1, buf, strlen(buf));
+		printf("	|	len: %d\n", (int)ft_strlen(buf));
 	}
 	return (0);
 }
