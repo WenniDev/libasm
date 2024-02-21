@@ -2,3 +2,5 @@
 *.a
 
 tester
+
+.gdb_history
