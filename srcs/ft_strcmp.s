@@ -3,6 +3,8 @@ section .data
 section .text
 	global ft_strcmp
 
+	;int ft_strcmp(const char *s1, const char *s2);
+
 	;const char *s1	=>	RDI
 	;const char *s2	=>	RSI
 ft_strcmp:
@@ -12,10 +14,10 @@ ft_strcmp:
 ft_strcmp.loop:
 	mov bl, byte [rdi + rcx]
 
-	cmp bh, byte [rsi + rcx]
+	cmp bl, byte [rsi + rcx]
 	jne ft_strcmp.end
 
-	cmp bh, 0
+	cmp bl, 0
 	je ft_strcmp.end
 	
 	inc rcx
@@ -23,6 +25,7 @@ ft_strcmp.loop:
 	jmp ft_strcmp.loop
 
 ft_strcmp.end:
-	sub bh, byte [rsi + rcx]
-	mov ah, bh
+	sub bl, byte [rsi + rcx]
+	mov al, bl
+	movsx eax, al
 	ret
