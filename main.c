@@ -5,16 +5,16 @@
 
 int main(void) {
 	{
-		printf("<==== ft_strlen ====>\n");
+		printf("\n\n<==== ft_strlen ====>\n");
 		
-		const char *str = "coucou";
-		printf("str: %s(%p)	|	length: %d", str, str, (int)ft_strlen(str));
+		const char *str = "coucou_ft_strlen";
+		printf("str: %s(%p)	|	length: %d\n", str, str, (int)ft_strlen(str));
 	}
 	{
 		printf("\n\n<==== ft_strcpy ====>\n");
 
-		const char *src = "coucou";
-		char dest[] = "aaaaaa";
+		const char *src = "coucou_ft_strcpy";
+		char dest[] = "aaaaaaaaaaaaaaaa";
 	
 		printf("dest:	%s(%p)	|	src: %s(%p)\n", dest, dest, src, src);
 		printf("ret:	%s(%p)\n",	ft_strcpy(dest, src), dest);
@@ -23,15 +23,15 @@ int main(void) {
 	{
 		printf("\n\n<==== ft_strcmp ====>\n");
 		
-		const char *s1 = "012345";
-		const char *s2 = "0123456";
+		const char *s1 = "coucou_ft_strcmp";
+		const char *s2 = "coucou_fd_strcmp";
 		printf("%s(%p) - %s(%p) = %d\n", s1, s1, s2, s2, ft_strcmp(s1, s2));
 		printf("%s(%p) - %s(%p) = %d\n", s1, s1, s2, s2, strcmp(s1, s2));
 	}
 	{
 		printf("\n\n<==== ft_write ====>\n");
 		
-		const char *buf = "coucou";
+		const char *buf = "coucou_ft_write";
 		int len = 0;
 
 		printf("buffer:	%s(%p)\n", buf, buf);
