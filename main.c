@@ -57,7 +57,19 @@ int main(void) {
 			printf("ft_read: %s	|	errno: %d\n", strerror(errno), errno);
 
 		len = ft_read(0, &buf, sizeof(buf));
-		printf("buffer: %s	|	len: %d\n", buf, (int)ft_strlen(buf));
+		printf("buffer: %s(%p)	|	len: %d\n", buf, buf, (int)ft_strlen(buf));
+	}
+
+	{
+		printf("\n\n<==== ft_strdup ====>\n");
+		
+		char *res;
+		char *s = "coucou_ft_strdup";
+
+		// if ((res = ft_strdup(NULL)) == NULL)
+		// 	printf("ft_read: %s	|	errno: %d\n", strerror(errno), errno);
+		res = ft_strdup(s);
+		printf("res: %s(%p)	|	src: %s(%p)\n", res, res, s, s);
 	}
 	return (0);
 }
