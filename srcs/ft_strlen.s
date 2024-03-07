@@ -3,20 +3,21 @@ section .data
 section .text
 	global ft_strlen
 
-	;size_t ft_strlen(const char *s);
-
-	;char *s => RDI
+	; size_t ft_strlen(const char *s);
+	; char *s => RDI
 ft_strlen:
-	xor	rax, rax
+    xor rcx, rcx ; rcx = 0
+    not rcx ; invert rcx
 
-ft_strlen.loop:
-	cmp byte [rdi], 0
+	xor al, al ; al = 0
+    cld ; clear direction flag
+    repne scasb ; scan byte in rdi
+
+	not rcx ; invert rcx
+    dec rcx ; rcx = rcx - 1
+	
 	je ft_strlen.end
-	
-	inc rax
-	inc rdi
-	
-	jmp ft_strlen.loop
 
 ft_strlen.end:
+	mov rax, rcx ; rax = rcx
 	ret
