@@ -4,4 +4,4 @@
 tester
 
 .gdb_history
-peda-session-test.txt
+peda-session-*.txt
