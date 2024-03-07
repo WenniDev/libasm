@@ -66,8 +66,6 @@ int main(void) {
 		char *res;
 		char *s = "coucou_ft_strdup";
 
-		// if ((res = ft_strdup(NULL)) == NULL)
-		// 	printf("ft_read: %s	|	errno: %d\n", strerror(errno), errno);
 		res = ft_strdup(s);
 		printf("res: %s(%p)	|	src: %s(%p)\n", res, res, s, s);
 	}
