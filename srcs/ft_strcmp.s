@@ -8,24 +8,24 @@ section .text
 	;const char *s1	=>	RDI
 	;const char *s2	=>	RSI
 ft_strcmp:
-	mov rax, 0
-	xor rcx, rcx
+    xor rcx, rcx ; rcx = 0
+    not rcx ; invert rcx
 
-ft_strcmp.loop:
-	mov bl, byte [rdi + rcx]
+	xor al, al ; al = 0
+    cld ; clear direction flag
+    repne scasb ; scan byte in rdi to find al
 
-	cmp bl, byte [rsi + rcx]
-	jne ft_strcmp.end
+	not rcx ; invert rcx
+    dec rcx ; rcx = rcx - 1
 
-	cmp bl, 0
-	je ft_strcmp.end
+	sub rdi, rcx ; reset rdi
+	dec rdi
+
+	repe cmpsb ; compare each byte
 	
-	inc rcx
+	mov al, byte [ rdi - 1 ] 
+	sub al, byte [ rsi - 1 ]
 
-	jmp ft_strcmp.loop
+	movsx eax, al ; set negative byte
 
-ft_strcmp.end:
-	sub bl, byte [rsi + rcx]
-	mov al, bl
-	movsx eax, al
 	ret
