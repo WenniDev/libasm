@@ -8,19 +8,22 @@ section .text
 	;char *dest			=>	RDI
 	;const char *src	=>	RSI
 ft_strcpy:
+	xor rcx, rcx ; rcx = 0
+    not rcx ; invert rcx
+    
+	push rdi
+    xor al, al ; al = 0
+    cld ; clear direction flag
+    repne scasb ; scan for null byte
+	pop rdi
+
 	mov rax, rdi
-	xor rcx, rcx
 
-ft_strcpy.loop:
-	mov byte bl, byte [rsi + rcx]
-	mov byte [rdi + rcx], bl
+	not rcx ; invert rcx
+    dec rcx ; rcx = rcx - 1
 	
-	cmp byte [rsi + rcx], 0
-	je ft_strcpy.end
-	
-	inc rcx
+	cld ; clear direction flag
+    rep movsb ; copy rsi to rdi
 
-	jmp ft_strcpy.loop
-
-ft_strcpy.end:
 	ret
+
