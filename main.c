@@ -20,6 +20,7 @@ int main(void) {
 		printf("ret:	%s(%p)\n",	ft_strcpy(dest, src), dest);
 		printf("dest:	%s(%p)	|	src: %s(%p)\n", dest, dest, src, src);
 	}
+
 	{
 		printf("\n\n<==== ft_strcmp ====>\n");
 		
@@ -27,7 +28,15 @@ int main(void) {
 		const char *s2 = "coucou_fd_strcmp";
 		printf("%s(%p) - %s(%p) = %d\n", s1, s1, s2, s2, ft_strcmp(s1, s2));
 		printf("%s(%p) - %s(%p) = %d\n", s1, s1, s2, s2, strcmp(s1, s2));
+
+		printf("%s(%p) - %s(%p) = %d\n", s1, s1, s1, s1, ft_strcmp(s1, s1));
+		printf("%s(%p) - %s(%p) = %d\n", s1, s1, s1, s1, strcmp(s1, s1));
+
+		printf("%s(%p) - %s(%p) = %d\n", s2, s2, s1, s1, ft_strcmp(s2, s1));
+		printf("%s(%p) - %s(%p) = %d\n", s2, s2, s1, s1, strcmp(s2, s1));
+
 	}
+	
 	{
 		printf("\n\n<==== ft_write ====>\n");
 		
@@ -41,7 +50,7 @@ int main(void) {
 			printf("ft_write: %s	|	errno: %d\n", strerror(errno), errno);
 
 		len = ft_write(1, buf, strlen(buf));
-		printf("	|	len: %d\n", (int)ft_strlen(buf));
+		printf("	|	len: %d\n", len);
 	}
 
 
@@ -57,7 +66,7 @@ int main(void) {
 			printf("ft_read: %s	|	errno: %d\n", strerror(errno), errno);
 
 		len = ft_read(0, &buf, sizeof(buf));
-		printf("buffer: %s(%p)	|	len: %d\n", buf, buf, (int)ft_strlen(buf));
+		printf("buffer: %s(%p)	|	len: %d\n", buf, buf, len);
 	}
 
 	{
@@ -69,5 +78,6 @@ int main(void) {
 		res = ft_strdup(s);
 		printf("res: %s(%p)	|	src: %s(%p)\n", res, res, s, s);
 	}
+
 	return (0);
 }
