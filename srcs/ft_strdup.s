@@ -23,7 +23,7 @@ ft_strdup:
     inc rdi ; rdi = rdi + 1
 
     push rsi ; save rsi
-    call malloc 
+    call malloc WRT ..plt
     pop rsi ; restore rsi
     
     test rax, rax  ; Check if malloc succeeded
