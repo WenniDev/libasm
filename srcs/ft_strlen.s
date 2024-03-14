@@ -11,7 +11,7 @@ ft_strlen:
 
 	xor al, al ; al = 0
     cld ; clear direction flag
-    repne scasb ; scan byte in rdi
+    repne scasb ; scan byte in rdi to find al
 
 	not rcx ; invert rcx
     dec rcx ; rcx = rcx - 1
